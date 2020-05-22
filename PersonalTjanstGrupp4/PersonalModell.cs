@@ -5,10 +5,10 @@ namespace PersonalTjanstGrupp4
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class PersonalModel : DbContext
+    public partial class PersonalModell : DbContext
     {
-        public PersonalModel()
-            : base("name=PersonalModel")
+        public PersonalModell()
+            : base("name=PersonalModell")
         {
         }
 
@@ -17,7 +17,7 @@ namespace PersonalTjanstGrupp4
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Personal>()
-                .Property(e => e.Anvandarnamn)
+                .Property(e => e.AnvandarNamn)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Personal>()
@@ -34,7 +34,7 @@ namespace PersonalTjanstGrupp4
 
             modelBuilder.Entity<Personal>()
                 .Property(e => e.Roll)
-                .IsFixedLength();
+                .IsUnicode(false);
         }
     }
 }

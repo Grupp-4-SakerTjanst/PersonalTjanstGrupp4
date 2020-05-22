@@ -13,7 +13,7 @@ namespace PersonalTjanstGrupp4
 
         [Required]
         [StringLength(50)]
-        public string Anvandarnamn { get; set; }
+        public string AnvandarNamn { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -30,7 +30,7 @@ namespace PersonalTjanstGrupp4
         public int BehorighetsNiva { get; set; }
 
         [Required]
-        [StringLength(10)]
+        [StringLength(50)]
         public string Roll { get; set; }
     }
 }

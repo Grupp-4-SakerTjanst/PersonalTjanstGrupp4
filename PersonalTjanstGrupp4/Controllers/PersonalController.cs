@@ -12,20 +12,17 @@ using PersonalTjanstGrupp4;
 
 namespace PersonalTjanstGrupp4.Controllers
 {
-    public class PersonalsController : ApiController
+    public class PersonalController : ApiController
     {
-        private PersonalModel db = new PersonalModel();
+        private PersonalModell db = new PersonalModell();
 
-        // GET: api/Personals
+        // GET: api/Personal
         public IQueryable<Personal> GetPersonal()
         {
-           
             return db.Personal;
         }
 
-        // GET: api/Personals/5
-
-        [Route("Personals/{id:int}")]
+        // GET: api/Personal/5
         [ResponseType(typeof(Personal))]
         public IHttpActionResult GetPersonal(int id)
         {
@@ -38,9 +35,8 @@ namespace PersonalTjanstGrupp4.Controllers
             return Ok(personal);
         }
 
-        // PUT: api/Personals/5
-        [Route("Personals/{id:int}")]
-        [ResponseType(typeof(Personal))]
+        // PUT: api/Personal/5
+        [ResponseType(typeof(void))]
         public IHttpActionResult PutPersonal(int id, Personal personal)
         {
             if (!ModelState.IsValid)
@@ -74,8 +70,7 @@ namespace PersonalTjanstGrupp4.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Personals
-       
+        // POST: api/Personal
         [ResponseType(typeof(Personal))]
         public IHttpActionResult PostPersonal(Personal personal)
         {
@@ -90,7 +85,7 @@ namespace PersonalTjanstGrupp4.Controllers
             return CreatedAtRoute("DefaultApi", new { id = personal.Id }, personal);
         }
 
-        // DELETE: api/Personals/5
+        // DELETE: api/Personal/5
         [ResponseType(typeof(Personal))]
         public IHttpActionResult DeletePersonal(int id)
         {
