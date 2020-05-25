@@ -17,10 +17,6 @@ namespace PersonalTjanstGrupp4
 
         [Required]
         [StringLength(50)]
-        public string Losenord { get; set; }
-
-        [Required]
-        [StringLength(50)]
         public string Namn { get; set; }
 
         [Required]
@@ -32,5 +28,7 @@ namespace PersonalTjanstGrupp4
         [Required]
         [StringLength(50)]
         public string Roll { get; set; }
+
+        public int RefID { get; set; }
     }
 }

@@ -21,10 +21,6 @@ namespace PersonalTjanstGrupp4
                 .IsUnicode(false);
 
             modelBuilder.Entity<Personal>()
-                .Property(e => e.Losenord)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Personal>()
                 .Property(e => e.Namn)
                 .IsUnicode(false);
 
