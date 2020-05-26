@@ -98,6 +98,8 @@ namespace PersonalTjanstGrupp4.Controllers
             db.Personal.Remove(personal);
             db.SaveChanges();
 
+           
+
             return Ok(personal);
         }
 
