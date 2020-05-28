@@ -71,9 +71,12 @@ namespace PersonalTjanstGrupp4.Controllers
         }
 
         // POST: api/Personal
-        [ResponseType(typeof(Personal))]
+        
+        [Route("SkapaPersonal")]
+        [HttpPost]
         public IHttpActionResult PostPersonal(Personal personal)
         {
+            personal.RefID = personal.Id;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -82,11 +85,15 @@ namespace PersonalTjanstGrupp4.Controllers
             db.Personal.Add(personal);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = personal.Id }, personal);
+            return Ok("Konto Skapats");
         }
 
+
+
         // DELETE: api/Personal/5
-        [ResponseType(typeof(Personal))]
+        //[ResponseType(typeof(Personal))]
+        [Route("TaBortPersonal")]
+        [HttpPost]
         public IHttpActionResult DeletePersonal(int id)
         {
             Personal personal = db.Personal.Find(id);
@@ -97,7 +104,8 @@ namespace PersonalTjanstGrupp4.Controllers
 
             db.Personal.Remove(personal);
             db.SaveChanges();
-            
+ 
+
             return Ok(personal);
         }
 
