@@ -85,8 +85,12 @@ namespace PersonalTjanstGrupp4.Controllers
             return CreatedAtRoute("DefaultApi", new { id = personal.Id }, personal);
         }
 
+
+
         // DELETE: api/Personal/5
-        [ResponseType(typeof(Personal))]
+        //[ResponseType(typeof(Personal))]
+        [Route("TaBortPersonal")]
+        [HttpPost]
         public IHttpActionResult DeletePersonal(int id)
         {
             Personal personal = db.Personal.Find(id);
@@ -97,8 +101,7 @@ namespace PersonalTjanstGrupp4.Controllers
 
             db.Personal.Remove(personal);
             db.SaveChanges();
-
-           
+ 
 
             return Ok(personal);
         }
