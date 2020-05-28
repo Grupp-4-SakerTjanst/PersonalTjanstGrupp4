@@ -36,9 +36,11 @@ namespace PersonalTjanstGrupp4.Controllers
         }
 
         // PUT: api/Personal/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutPersonal(int id, Personal personal)
+        [Route("UppdateraPersonal")]
+        [HttpPut]
+        public IHttpActionResult PutPersonal(Personal personal)
         {
+            var id = personal.Id;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
