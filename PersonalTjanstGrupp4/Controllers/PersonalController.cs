@@ -38,18 +38,23 @@ namespace PersonalTjanstGrupp4.Controllers
         // PUT: api/Personal/5
         //[Route("UppdateraPersonal")]
         [HttpPut]
-        public IHttpActionResult PutPersonal(Personal personal)
+        public IHttpActionResult PutPersonal(Personal updPersonal)
         {
             if (!ModelState.IsValid)
                 return BadRequest("Not a valid data");
 
             using (var ctx = new PersonalModell())
             {
-                var existingPersonal = ctx.Personal.Where(s => s.Id == personal.Id).FirstOrDefault<Personal>();
+                var existingPersonal = ctx.Personal.Where(s => s.Id == updPersonal.Id).FirstOrDefault<Personal>();
 
                 if (existingPersonal != null)
                 {
-                    existingPersonal.Id = personal.Id;
+                    existingPersonal.Namn = updPersonal.Namn;
+                    existingPersonal.Efternamn = updPersonal.Efternamn;
+                    existingPersonal.AnvandarNamn = updPersonal.AnvandarNamn;
+                    existingPersonal.Roll = updPersonal.Roll;
+                    existingPersonal.BehorighetsNiva = updPersonal.BehorighetsNiva;
+                
                     ctx.SaveChanges();
                 }
                 else
