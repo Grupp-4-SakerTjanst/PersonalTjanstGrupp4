@@ -36,41 +36,61 @@ namespace PersonalTjanstGrupp4.Controllers
         }
 
         // PUT: api/Personal/5
-        [Route("UppdateraPersonal")]
+        //[Route("UppdateraPersonal")]
         [HttpPut]
         public IHttpActionResult PutPersonal(Personal personal)
         {
-            var id = personal.Id;
             if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+                return BadRequest("Not a valid data");
 
-            if (id != personal.Id)
+            using (var ctx = new PersonalModell())
             {
-                return BadRequest();
-            }
+                var existingPersonal = ctx.Personal.Where(s => s.Id == personal.Id).FirstOrDefault<Personal>();
 
-            db.Entry(personal).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PersonalExists(id))
+                if (existingPersonal != null)
                 {
-                    return NotFound();
+                    existingPersonal.Id = personal.Id;
+                    ctx.SaveChanges();
                 }
                 else
                 {
-                    throw;
+                    return NotFound();
                 }
             }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok();
         }
+
+
+        //var id = personal.Id;
+        //if (!ModelState.IsValid)
+        //{
+        //    return BadRequest(ModelState);
+        //}
+
+        //if (id != personal.Id)
+        //{
+        //    return BadRequest();
+        //}
+
+        //db.Entry(personal).State = EntityState.Modified;
+
+        //try
+        //{
+        //    db.SaveChanges();
+        //}
+        //catch (DbUpdateConcurrencyException)
+        //{
+        //    if (!PersonalExists(id))
+        //    {
+        //        return NotFound();
+        //    }
+        //    else
+        //    {
+        //        throw;
+        //    }
+        //}
+        //return StatusCode(HttpStatusCode.NoContent);
+    
 
         // POST: api/Personal
         
