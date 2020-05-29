@@ -23,7 +23,7 @@ namespace PersonalTjanstGrupp4.Controllers
         }
 
         // GET: api/Personal/5
-        [ResponseType(typeof(Personal))]
+        [HttpGet]
         public IHttpActionResult GetPersonal(int id)
         {
             Personal personal = db.Personal.Find(id);
@@ -92,11 +92,11 @@ namespace PersonalTjanstGrupp4.Controllers
 
         // DELETE: api/Personal/5
         //[ResponseType(typeof(Personal))]
-        [Route("TaBortPersonal")]
-        [HttpPost]
-        public IHttpActionResult DeletePersonal(int id)
+        //[Route("DeletePersonal")]
+        [HttpDelete]
+        public IHttpActionResult DeletePersonal(int Id)
         {
-            Personal personal = db.Personal.Find(id);
+            Personal personal = db.Personal.Find(Id);
             if (personal == null)
             {
                 return NotFound();
@@ -106,7 +106,7 @@ namespace PersonalTjanstGrupp4.Controllers
             db.SaveChanges();
  
 
-            return Ok(personal);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)
